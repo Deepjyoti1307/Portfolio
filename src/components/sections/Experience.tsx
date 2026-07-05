@@ -5,6 +5,7 @@ import SectionLabel from "../ui/SectionLabel";
 import { EXPERIENCE } from "@/lib/content";
 
 export default function Experience() {
+  const exp = EXPERIENCE[0];
   return (
     <section id="experience" className="py-16 md:py-24 border-b border-border bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -20,15 +21,15 @@ export default function Experience() {
             {/* Top-right corner cut accent */}
             <div className="absolute top-0 right-0 w-4 h-4 bg-border/40 clip-path polygon(0 0, 100% 0, 100% 100%)" />
             
-            <span className="font-heading text-accent-secondary font-black text-6xl md:text-8xl tracking-widest leading-none shadow-[0_0_15px_rgba(255,0,255,0.2)]">
-              {EXPERIENCE.number}
+            <span className="font-heading text-accent-secondary font-black text-6xl md:text-8xl tracking-widest leading-none shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+              {exp.number}
             </span>
             <div className="border-t border-border pt-4 mt-8">
               <p className="font-label text-[9px] font-bold uppercase tracking-widest text-muted-foreground">
                 SYS_RECORD_ID
               </p>
               <p className="font-mono text-xs md:text-sm font-bold uppercase tracking-widest text-foreground mt-1 bg-accent-secondary/15 px-2 py-0.5 border border-accent-secondary/20 inline-block">
-                {EXPERIENCE.dates}
+                {exp.dates}
               </p>
             </div>
           </div>
@@ -41,16 +42,16 @@ export default function Experience() {
                 [ DATABASE_QUERY // INTERN_RECORD ]
               </span>
               <h3 className="font-heading font-black text-2xl md:text-3xl tracking-widest uppercase text-foreground leading-tight">
-                {EXPERIENCE.title}
+                {exp.title}
               </h3>
               <p className="font-heading text-lg md:text-xl font-bold uppercase text-accent mt-1 tracking-wider">
-                @ {EXPERIENCE.company}
+                @ {exp.company}
               </p>
             </div>
 
             {/* Bullet Points styled as logs */}
             <ul className="flex flex-col gap-6">
-              {EXPERIENCE.bullets.map((bullet, index) => (
+              {exp.bullets.map((bullet, index) => (
                 <li key={index} className="flex gap-3 items-start">
                   <span className="font-mono text-accent-secondary font-bold select-none shrink-0 mt-0.5">
                     &gt;

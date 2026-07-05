@@ -91,7 +91,7 @@ export const PROJECTS: Project[] = [
     dates: "Jan 2026 – Feb 2026",
     description: "Safety-First Artist Bookings. Next.js 14 + TypeScript artist booking platform with Firebase/Appwrite auth, Tailwind CSS, and Framer Motion UI.",
     technologies: ["Next.js", "TypeScript", "Firebase", "Appwrite", "Tailwind CSS"],
-    url: "#", // TODO: User to supply actual URL
+    url: "https://tarang-2026.vercel.app/",
   },
   {
     number: "02",
@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
     dates: "Apr 2026",
     description: "Full-Stack Event Management Platform. Clerk-based auth, MongoDB-backed RSVP workflows, public event pages, email notifications, HubSpot CRM sync.",
     technologies: ["Next.js", "Clerk", "MongoDB", "Tailwind CSS", "HubSpot API"],
-    url: "#", // TODO: User to supply actual URL
+    url: "https://eventic-nu.vercel.app/",
   },
   {
     number: "03",
@@ -107,7 +107,7 @@ export const PROJECTS: Project[] = [
     dates: "May 2026",
     description: "Murder Mystery Game Platform. Secure batch access, timed quizzes, hint tracking, and an admin dashboard.",
     technologies: ["Next.js", "Clerk", "FastAPI", "MongoDB", "Tailwind CSS"],
-    url: "#", // TODO: User to supply actual URL
+    url: "https://murder-mystery-seven.vercel.app/",
   },
 ];
 
@@ -130,25 +130,21 @@ export const FOCUS_AREAS: FocusArea[] = [
     ctaText: "View Experience",
     ctaLink: "#experience",
   },
-  {
-    title: "Product Design & Prototyping",
-    description: "Translating application feature concepts into precise wireframes and interactive user journeys with Figma.",
-    ctaText: "Get in Touch",
-    ctaLink: "#contact",
-  },
 ];
 
-export const EXPERIENCE: ExperienceEntry = {
-  number: "01",
-  title: "Software Development Intern",
-  company: "GoAvo AI",
-  dates: "May 2026 – Present",
-  bullets: [
-    "Migrated turnout prediction ML models from Azure ML Studio VM compute to Azure Function App with in-process inference engine, blob artifact loading, and v1/v2 HTTP routes; rewired Flask API to call the Function App instead of AML /score endpoints.",
-    "Optimized RSVP search across the Next.js frontend and Flask backend with a 3-character minimum threshold, 300ms debounce, and aligned API guards — reducing unnecessary queries and improving attendee lookup speed.",
-    "Built a four-tier SaaS pricing and entitlement system (Free, Pro, Growth, Enterprise) with Pay-per-Event, Monthly, and Yearly billing; canonical MongoDB billing-records ledger; Razorpay/Cashfree checkout integration.",
-  ],
-};
+export const EXPERIENCE: ExperienceEntry[] = [
+  {
+    number: "01",
+    title: "Full-Stack Developer Intern",
+    company: "GoAvo",
+    dates: "May 2026 – Present",
+    bullets: [
+      "Migrated turnout prediction ML models from Azure ML Studio VM compute to Azure Function App with in-process inference engine, blob artifact loading, and v1/v2 HTTP routes; rewired Flask API to call Function App instead of AML /score endpoints.",
+      "Optimized RSVP search across Next.js frontend and Flask backend: 3-character minimum threshold, 300ms debounce, and aligned API guards — reducing unnecessary queries and improving attendee lookup speed.",
+      "Built four-tier SaaS pricing and entitlement system (Free, Pro, Growth, Enterprise) with Pay-per-Event, Monthly, and Yearly billing; canonical MongoDB billing records ledger; Razorpay/Cashfree checkout integration.",
+    ],
+  },
+];
 
 export const ACTIVITIES: Activity[] = [
   {

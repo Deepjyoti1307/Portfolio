@@ -20,11 +20,9 @@ export default function Button({
   className = "",
   disabled = false,
 }: ButtonProps) {
-  // Base utility class names for accessibility and basic display
   const baseStyles =
-    "relative inline-flex items-center justify-center font-label uppercase tracking-widest text-xs font-bold transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-40 disabled:pointer-events-none cursor-pointer";
+    "relative inline-flex items-center justify-center font-label uppercase tracking-widest text-xs font-bold transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-40 disabled:pointer-events-none cursor-pointer glitch-btn";
 
-  // For variants that do not need nested chamfer border wrappers (Outline, Ghost, Glitch)
   const flatVariants = {
     outline:
       "border border-border bg-transparent text-foreground hover:border-accent hover:text-accent hover:shadow-neon-sm h-12 px-6",
@@ -34,7 +32,6 @@ export default function Button({
       "bg-accent text-black font-black cyber-clip-sm border-0 hover:brightness-110 h-12 px-6 shadow-neon hover:shadow-neon-lg active:scale-95",
   };
 
-  // Click-handler wrapper for common element settings
   const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     if (disabled) {
       e.preventDefault();
@@ -45,13 +42,15 @@ export default function Button({
     }
   };
 
-  // Helper to render nested custom chamfered boundaries (for Primary & Secondary outlines)
+  // Get the text content for data-text attribute (used by glitch CSS pseudo-elements)
+  const textContent = typeof children === "string" ? children : undefined;
+
   const renderChamferedButton = () => {
     const isPrimary = variant === "primary" || variant === "accent";
     const outerBg = isPrimary
       ? "bg-accent hover:shadow-neon"
       : "bg-accent-secondary hover:shadow-neon-secondary";
-    
+
     const textColors = isPrimary
       ? "text-accent group-hover:text-background group-hover:bg-accent"
       : "text-accent-secondary group-hover:text-background group-hover:bg-accent-secondary";
@@ -63,6 +62,8 @@ export default function Button({
         >
           {children}
         </div>
+        {/* Glitch scan line */}
+        <span className="glitch-scan" aria-hidden="true" />
       </div>
     );
 
@@ -72,6 +73,7 @@ export default function Button({
           <a
             href={href}
             onClick={handleClick}
+            data-text={textContent}
             className={`${baseStyles} group w-full sm:w-auto h-12 ${className}`}
             target={href.startsWith("mailto:") ? undefined : "_blank"}
             rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
@@ -84,6 +86,7 @@ export default function Button({
         <Link
           href={href}
           onClick={handleClick}
+          data-text={textContent}
           className={`${baseStyles} group w-full sm:w-auto h-12 ${className}`}
         >
           {content}
@@ -96,6 +99,7 @@ export default function Button({
         type={type}
         onClick={handleClick}
         disabled={disabled}
+        data-text={textContent}
         className={`${baseStyles} group w-full sm:w-auto h-12 ${className}`}
       >
         {content}
@@ -103,7 +107,6 @@ export default function Button({
     );
   };
 
-  // Render outline, ghost, and glitch variants natively
   if (variant === "primary" || variant === "secondary" || variant === "accent") {
     return renderChamferedButton();
   }
@@ -116,17 +119,20 @@ export default function Button({
         <a
           href={href}
           onClick={handleClick}
+          data-text={textContent}
           className={combinedStyles}
           target={href.startsWith("mailto:") ? undefined : "_blank"}
           rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
         >
           {children}
+          <span className="glitch-scan" aria-hidden="true" />
         </a>
       );
     }
     return (
-      <Link href={href} onClick={handleClick} className={combinedStyles}>
+      <Link href={href} onClick={handleClick} data-text={textContent} className={combinedStyles}>
         {children}
+        <span className="glitch-scan" aria-hidden="true" />
       </Link>
     );
   }
@@ -136,9 +142,11 @@ export default function Button({
       type={type}
       onClick={handleClick}
       disabled={disabled}
+      data-text={textContent}
       className={combinedStyles}
     >
       {children}
+      <span className="glitch-scan" aria-hidden="true" />
     </button>
   );
 }

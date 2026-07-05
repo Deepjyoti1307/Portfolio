@@ -233,6 +233,140 @@ body {
   text-shadow: 2px 0 #ff00ff, -2px 0 #00d4ff;
 }
 
+/* ═══════════════════════════════════════════
+   GLITCH BUTTON — hover chromatic aberration
+   ═══════════════════════════════════════════ */
+
+@keyframes glitch-before {
+  0%   { clip-path: inset(40% 0 50% 0); transform: translate(-3px, 0); opacity: 0.8; }
+  20%  { clip-path: inset(10% 0 80% 0); transform: translate(3px, 0);  opacity: 0.9; }
+  40%  { clip-path: inset(70% 0 10% 0); transform: translate(-2px, 1px); opacity: 0.7; }
+  60%  { clip-path: inset(30% 0 60% 0); transform: translate(2px, -1px); opacity: 0.8; }
+  80%  { clip-path: inset(60% 0 20% 0); transform: translate(-3px, 0); opacity: 0.9; }
+  100% { clip-path: inset(40% 0 50% 0); transform: translate(0, 0);    opacity: 0; }
+}
+/* Full body shake with skew */
+@keyframes glitch-shake {
+  0%,100% { transform: translate(0,0) skewX(0deg); }
+  8%       { transform: translate(-2px,0) skewX(-1deg); }
+  16%      { transform: translate(2px,0)  skewX(1deg); }
+  24%      { transform: translate(-1px,0) skewX(-0.5deg); }
+  32%      { transform: translate(1px,0)  skewX(0.5deg); }
+  40%      { transform: translate(-2px,0) skewX(-1deg); }
+  48%      { transform: translate(2px,0)  skewX(0deg); }
+  56%      { transform: translate(0,0)    skewX(0.5deg); }
+  64%      { transform: translate(-1px,0) skewX(-0.5deg); }
+  72%      { transform: translate(1px,0)  skewX(0deg); }
+}
+
+/* Text chromatic aberration shadow flicker */
+@keyframes glitch-text-shadow {
+  0%,100% { text-shadow:  2px 0 #00e5ff, -2px 0 #ff00ff; }
+  20%      { text-shadow:  3px 0 #ff00ff, -3px 0 #00e5ff; }
+  40%      { text-shadow: -2px 0 #00e5ff,  2px 0 #ff00ff; }
+  60%      { text-shadow:  1px 0 #ff00ff, -1px 0 #00e5ff; }
+  80%      { text-shadow: -3px 0 #00e5ff,  3px 0 #ff00ff; }
+}
+
+/* Border colour flicker */
+@keyframes glitch-border {
+  0%,100% { box-shadow: 0 0 0 1px #B2E0D6, 0 0 8px rgba(178,224,214,0.4); }
+  25%      { box-shadow: 0 0 0 1px #ff00ff, 0 0 12px rgba(255,0,255,0.5); }
+  50%      { box-shadow: 0 0 0 1px #00e5ff, 0 0 12px rgba(0,229,255,0.5); }
+  75%      { box-shadow: 0 0 0 1px #B2E0D6, 0 0 8px rgba(178,224,214,0.4); }
+}
+
+/* Horizontal clip-slice overlay using ::before (empty content — always works) */
+@keyframes glitch-slice {
+  0%   { clip-path: inset(0 0 98% 0); transform: translateX(-3px); opacity: 0.7; }
+  15%  { clip-path: inset(30% 0 60% 0); transform: translateX(3px); opacity: 0.8; }
+  30%  { clip-path: inset(60% 0 20% 0); transform: translateX(-2px); opacity: 0.6; }
+  45%  { clip-path: inset(10% 0 80% 0); transform: translateX(2px); opacity: 0.9; }
+  60%  { clip-path: inset(70% 0 10% 0); transform: translateX(-3px); opacity: 0.7; }
+  75%  { clip-path: inset(40% 0 50% 0); transform: translateX(3px); opacity: 0.5; }
+  90%  { clip-path: inset(80% 0 5%  0); transform: translateX(-1px); opacity: 0.8; }
+  100% { clip-path: inset(0 0 98% 0); transform: translateX(0);    opacity: 0; }
+}
+
+/* Base: just needs relative + isolation */
+.glitch-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Cyan coloured overlay slice (no text, just a coloured copy of the bg) */
+.glitch-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 229, 255, 0.15);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Magenta coloured overlay slice */
+.glitch-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 0, 255, 0.12);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Scan-line sweep child element */
+.glitch-btn .glitch-scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 229, 255, 0.06) 3px,
+    rgba(0, 229, 255, 0.06) 4px
+  );
+  pointer-events: none;
+  opacity: 0;
+  z-index: 3;
+  transition: opacity 0.1s ease;
+  animation: none;
+}
+
+/* ── HOVER STATE ── */
+.glitch-btn:hover {
+  animation: glitch-shake 0.35s steps(2) infinite,
+             glitch-border 0.35s steps(2) infinite;
+}
+
+/* Text gets chromatic aberration */
+.glitch-btn:hover * {
+  animation: glitch-text-shadow 0.35s steps(2) infinite;
+}
+
+/* Cyan slice flashes */
+.glitch-btn:hover::before {
+  animation: glitch-slice 0.35s steps(2) infinite;
+}
+
+/* Magenta slice flashes offset by half cycle */
+.glitch-btn:hover::after {
+  animation: glitch-slice 0.35s steps(2) 0.17s infinite;
+}
+
+/* Scanlines appear */
+.glitch-btn:hover .glitch-scan {
+  opacity: 1;
+  animation: scanline-sweep 0.6s linear infinite;
+}
+
+@keyframes scanline-sweep {
+  from { background-position: 0 -100%; }
+  to   { background-position: 0 200%;  }
+}
+
 /* Standard accessibility reduced-motion resets */
 @media (prefers-reduced-motion: reduce) {
   *,
