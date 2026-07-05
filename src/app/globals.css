@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #171f24;
+  --color-foreground: #e0e0e0;
+  --color-card: #36454F;
+  --color-muted: #28333b;
+  --color-muted-foreground: #81929d;
+  --color-accent: #B2E0D6;
+  --color-accent-secondary: #00e5ff;
+  --color-accent-tertiary: #00d4ff;
+  --color-border: #485c69;
+  --color-input: #36454F;
+  --color-ring: #B2E0D6;
+  --color-destructive: #ff3366;
+
+  --font-heading: var(--font-orbitron), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-label: var(--font-share-tech-mono), monospace;
+
+  --radius-none: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-full: 0px;
+
+  --border-width: 1px;
+  --border-width-2: 2px;
+  --border-width-4: 4px;
+
+  --shadow-none: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-ring-accent: none;
+
+  /* Cyberpunk Neon Glows themed around Soft Mint (#B2E0D6) */
+  --shadow-neon: 0 0 5px #B2E0D6, 0 0 10px rgba(178, 224, 214, 0.4);
+  --shadow-neon-sm: 0 0 3px #B2E0D6, 0 0 6px rgba(178, 224, 214, 0.3);
+  --shadow-neon-lg: 0 0 10px #B2E0D6, 0 0 20px rgba(178, 224, 214, 0.6), 0 0 40px rgba(178, 224, 214, 0.25);
+  --shadow-neon-secondary: 0 0 5px #00e5ff, 0 0 15px rgba(0, 229, 255, 0.35);
+  --shadow-neon-tertiary: 0 0 5px #00d4ff, 0 0 15px rgba(0, 212, 255, 0.35);
+  --shadow-neon-destructive: 0 0 5px #ff3366, 0 0 15px rgba(255, 51, 102, 0.35);
+
+  --animate-scanline: scanline 8s linear infinite;
+  --animate-blink: blink 1.2s step-end infinite;
+  --animate-glitch: glitch 0.3s steps(2) infinite;
+  --animate-pulse-slow: pulse-slow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  --animate-marquee: marquee 25s linear infinite;
+}
+
+/* Animations with hardware acceleration for buttery smoothness */
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+.animate-blink {
+  animation: blink 1.2s step-end infinite;
+}
+
+.animate-glitch {
+  animation: glitch 0.3s steps(2) infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(-1px, 1px, 0);
+  }
+  40% {
+    transform: translate3d(1.5px, -1px, 0);
+  }
+  60% {
+    transform: translate3d(-1px, -1px, 0);
+  }
+  80% {
+    transform: translate3d(1px, 1.5px, 0);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Global resets & CRT noise */
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+}
+
+/* scanline scan sweep */
+.scanline-overlay {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.18) 2px,
+    rgba(0, 0, 0, 0.18) 4px
+  );
+}
+.scanline-overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(178, 224, 214, 0.14) 50%,
+    transparent
+  );
+  animation: var(--animate-scanline);
+}
+
+/* Tech panel circuit grid background */
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(178, 224, 214, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(178, 224, 214, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.cyber-grid-cyan {
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Terminal Blinking Cursor */
+.terminal-cursor {
+  display: inline-block;
+  background-color: var(--color-accent);
+  width: 8px;
+  height: 15px;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: var(--animate-blink);
+}
+
+.terminal-cursor-cyan {
+  background-color: var(--color-accent-secondary);
+}
+
+/* Chamfer polygon clip-paths */
+.cyber-clip-md {
+  clip-path: polygon(
+    0 12px, 12px 0,
+    calc(100% - 12px) 0, 100% 12px,
+    100% calc(100% - 12px), calc(100% - 12px) 100%,
+    12px 100%, 0 calc(100% - 12px)
+  );
+}
+
+.cyber-clip-md-inner {
+  clip-path: polygon(
+    0 11px, 11px 0,
+    calc(100% - 11px) 0, 100% 11px,
+    100% calc(100% - 11px), calc(100% - 11px) 100%,
+    11px 100%, 0 calc(100% - 11px)
+  );
+}
+
+.cyber-clip-sm {
+  clip-path: polygon(
+    0 6px, 6px 0,
+    calc(100% - 6px) 0, 100% 6px,
+    100% calc(100% - 6px), calc(100% - 6px) 100%,
+    6px 100%, 0 calc(100% - 6px)
+  );
+}
+
+.cyber-clip-sm-inner {
+  clip-path: polygon(
+    0 5px, 5px 0,
+    calc(100% - 5px) 0, 100% 5px,
+    100% calc(100% - 5px), calc(100% - 5px) 100%,
+    5px 100%, 0 calc(100% - 5px)
+  );
+}
+
+/* Chromatic Aberration Text Shadows */
+.cyber-glitch-text {
+  position: relative;
+  text-shadow: 2px 0 #ff00ff, -2px 0 #00d4ff;
+}
+
+/* Standard accessibility reduced-motion resets */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    text-shadow: none !important;
+    transform: none !important;
+  }
+  .scanline-overlay::after {
+    display: none !important;
+  }
+}
