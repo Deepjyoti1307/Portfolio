@@ -135,8 +135,8 @@ export const FOCUS_AREAS: FocusArea[] = [
 export const EXPERIENCE: ExperienceEntry[] = [
   {
     number: "01",
-    title: "Full-Stack Developer Intern",
-    company: "GoAvo",
+    title: "SDE Intern",
+    company: "GoAvo AI",
     dates: "May 2026 – Present",
     bullets: [
       "Migrated turnout prediction ML models from Azure ML Studio VM compute to Azure Function App with in-process inference engine, blob artifact loading, and v1/v2 HTTP routes; rewired Flask API to call Function App instead of AML /score endpoints.",

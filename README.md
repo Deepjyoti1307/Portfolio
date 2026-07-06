@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Deepjyoti Dey — Developer Portfolio
 
-## Getting Started
+Personal portfolio of **Deepjyoti Dey**, a Full-Stack Developer and CS undergraduate at RCCIIT, Kolkata. Built with a **Cyberpunk / Glitch design system** — neon accents, CRT scanlines, 3D card tilt, and chromatic aberration effects.
 
-First, run the development server:
+🔗 **Live:** [https://deepjyoti-dey-1307.vercel.app/](https://deepjyoti-dey-1307.vercel.app/)
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router, Static Export) |
+| Language | TypeScript |
+| Styling | Vanilla CSS + CSS custom properties |
+| Fonts | Orbitron · Share Tech Mono · JetBrains Mono |
+| Icons | Lucide React |
+| Deploy | Vercel |
+
+---
+
+## Sections
+
+- **Hero** — intro, profile photo, CV download, social links
+- **Projects** — Tarang, Eventic, Murder Mystery (3D tilt cards, live links)
+- **Skills** — scrolling marquee of tech stack
+- **Experience** — GoAvo internship (terminal log style)
+- **Education & Activities** — academic background and club roles
+
+---
+
+## Running Locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+src/
+├── app/
+│   ├── globals.css      # Design tokens, animations, glitch-btn
+│   ├── layout.tsx       # Font loading, metadata
+│   └── page.tsx         # Page assembly
+├── components/
+│   ├── layout/          # Navbar, Footer
+│   ├── sections/        # Hero, Projects, Skills, Experience, Education
+│   └── ui/              # Button, Card, SectionLabel
+└── lib/
+    └── content.ts       # All hardcoded portfolio data
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Content Updates
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All portfolio content lives in [`src/lib/content.ts`](src/lib/content.ts) — edit that single file to update personal info, projects, experience, and social links.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT — free to use as a portfolio template with attribution.
