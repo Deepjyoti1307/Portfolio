@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #fff9fb;
-  --color-foreground: #3f3a52;
-  --color-card: #fffdfd;
-  --color-muted: #f3edf5;
-  --color-muted-foreground: #776f83;
-  --color-accent: #93cbb6;
-  --color-accent-secondary: #aebee8;
-  --color-accent-tertiary: #e5aec8;
-  --color-border: #ded5e3;
-  --color-input: #fffdfd;
-  --color-ring: #93cbb6;
-  --color-destructive: #df8da8;
+  --color-background: #f7f1f5;
+  --color-foreground: #342f46;
+  --color-card: #fdf9fb;
+  --color-muted: #ece5ee;
+  --color-muted-foreground: #665e73;
+  --color-accent: #5e9a83;
+  --color-accent-secondary: #6d7eb2;
+  --color-accent-tertiary: #b66786;
+  --color-border: #cec2d3;
+  --color-input: #fdf9fb;
+  --color-ring: #5e9a83;
+  --color-destructive: #bd617f;
 
   --font-heading: var(--font-orbitron), sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
@@ -49,12 +49,12 @@
   --animate-blink: blink 1.2s step-end infinite;
   --animate-glitch: glitch 0.3s steps(2) infinite;
   --animate-pulse-slow: pulse-slow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  --animate-marquee: marquee 25s linear infinite;
+  --animate-marquee: marquee 90s linear infinite;
 }
 
 /* Animations with hardware acceleration for buttery smoothness */
 .animate-marquee {
-  animation: marquee 25s linear infinite;
+  animation: marquee 90s linear infinite;
   will-change: transform;
   transform: translate3d(0, 0, 0);
 }
@@ -132,7 +132,7 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-mono);
   overflow-x: hidden;
-  background-image: radial-gradient(circle at top right, rgba(229, 174, 200, 0.16), transparent 30%), radial-gradient(circle at bottom left, rgba(174, 190, 232, 0.14), transparent 34%);
+  background-image: radial-gradient(circle at top right, rgba(210, 169, 188, 0.18), transparent 30%), radial-gradient(circle at bottom left, rgba(163, 176, 215, 0.16), transparent 34%);
 }
 
 /* scanline scan sweep */
@@ -141,8 +141,8 @@ body {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 0, 0, 0.18) 2px,
-    rgba(0, 0, 0, 0.18) 4px
+    rgba(52, 47, 70, 0.025) 2px,
+    rgba(52, 47, 70, 0.025) 4px
   );
 }
 .scanline-overlay::after {
@@ -155,7 +155,7 @@ body {
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(178, 224, 214, 0.14) 50%,
+    rgba(94, 154, 131, 0.1) 50%,
     transparent
   );
   animation: var(--animate-scanline);
@@ -164,15 +164,15 @@ body {
 /* Tech panel circuit grid background */
 .cyber-grid {
   background-image:
-    linear-gradient(rgba(178, 224, 214, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(178, 224, 214, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(94, 154, 131, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 154, 131, 0.08) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
 .cyber-grid-cyan {
   background-image:
-    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(109, 126, 178, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109, 126, 178, 0.08) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
