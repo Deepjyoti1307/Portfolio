@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #171f24;
-  --color-foreground: #e0e0e0;
-  --color-card: #36454F;
-  --color-muted: #28333b;
-  --color-muted-foreground: #81929d;
-  --color-accent: #B2E0D6;
-  --color-accent-secondary: #00e5ff;
-  --color-accent-tertiary: #00d4ff;
-  --color-border: #485c69;
-  --color-input: #36454F;
-  --color-ring: #B2E0D6;
-  --color-destructive: #ff3366;
+  --color-background: #fff9fb;
+  --color-foreground: #3f3a52;
+  --color-card: #fffdfd;
+  --color-muted: #f3edf5;
+  --color-muted-foreground: #776f83;
+  --color-accent: #93cbb6;
+  --color-accent-secondary: #aebee8;
+  --color-accent-tertiary: #e5aec8;
+  --color-border: #ded5e3;
+  --color-input: #fffdfd;
+  --color-ring: #93cbb6;
+  --color-destructive: #df8da8;
 
   --font-heading: var(--font-orbitron), sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
@@ -38,12 +38,12 @@
   --shadow-ring-accent: none;
 
   /* Cyberpunk Neon Glows themed around Soft Mint (#B2E0D6) */
-  --shadow-neon: 0 0 5px #B2E0D6, 0 0 10px rgba(178, 224, 214, 0.4);
-  --shadow-neon-sm: 0 0 3px #B2E0D6, 0 0 6px rgba(178, 224, 214, 0.3);
-  --shadow-neon-lg: 0 0 10px #B2E0D6, 0 0 20px rgba(178, 224, 214, 0.6), 0 0 40px rgba(178, 224, 214, 0.25);
-  --shadow-neon-secondary: 0 0 5px #00e5ff, 0 0 15px rgba(0, 229, 255, 0.35);
-  --shadow-neon-tertiary: 0 0 5px #00d4ff, 0 0 15px rgba(0, 212, 255, 0.35);
-  --shadow-neon-destructive: 0 0 5px #ff3366, 0 0 15px rgba(255, 51, 102, 0.35);
+  --shadow-neon: 0 8px 24px rgba(147, 203, 182, 0.22);
+  --shadow-neon-sm: 0 4px 14px rgba(147, 203, 182, 0.18);
+  --shadow-neon-lg: 0 14px 34px rgba(147, 203, 182, 0.26);
+  --shadow-neon-secondary: 0 8px 24px rgba(174, 190, 232, 0.28);
+  --shadow-neon-tertiary: 0 8px 24px rgba(229, 174, 200, 0.24);
+  --shadow-neon-destructive: 0 8px 24px rgba(223, 141, 168, 0.24);
 
   --animate-scanline: scanline 8s linear infinite;
   --animate-blink: blink 1.2s step-end infinite;
@@ -132,6 +132,7 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-mono);
   overflow-x: hidden;
+  background-image: radial-gradient(circle at top right, rgba(229, 174, 200, 0.16), transparent 30%), radial-gradient(circle at bottom left, rgba(174, 190, 232, 0.14), transparent 34%);
 }
 
 /* scanline scan sweep */
@@ -230,7 +231,7 @@ body {
 /* Chromatic Aberration Text Shadows */
 .cyber-glitch-text {
   position: relative;
-  text-shadow: 2px 0 #ff00ff, -2px 0 #00d4ff;
+  text-shadow: 2px 0 #e5aec8, -2px 0 #aebee8;
 }
 
 /* ═══════════════════════════════════════════

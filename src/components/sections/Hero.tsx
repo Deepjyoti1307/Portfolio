@@ -10,16 +10,16 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative cyber-grid border-b border-border py-16 md:py-24 lg:py-32 overflow-hidden bg-background"
+      className="relative cyber-grid border-b border-border py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 overflow-hidden bg-background"
     >
       {/* Background neon radial meshes */}
       <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[120px] pointer-events-none select-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent-secondary/5 rounded-full blur-[120px] pointer-events-none select-none" />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 relative z-10">
         
         {/* Asymmetric 7:5 split */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* Left Column: Typographic terminal stream (col-span-7) */}
           <div className="md:col-span-7 flex flex-col items-start text-left">
@@ -28,11 +28,11 @@ export default function Hero() {
             </span>
             
             {/* Chromatic aberration animated heading */}
-            <h1 className="font-heading text-foreground font-black text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8rem] leading-none tracking-widest uppercase mb-6 select-none cyber-glitch-text">
+            <h1 className="font-heading text-foreground font-black text-[clamp(3.5rem,6vw,6.5rem)] leading-[0.92] tracking-[0.08em] uppercase mb-7 select-none cyber-glitch-text">
               Developer
             </h1>
 
-            <div className="border-l border-accent-secondary pl-4 md:pl-6 mb-8 max-w-2xl bg-accent-secondary/5 py-3 pr-4">
+            <div className="w-full max-w-2xl border-l-4 border-accent-secondary mb-8 bg-accent-secondary/10 px-5 py-5 md:px-6 md:py-6">
               <p className="font-heading font-black text-xl md:text-2xl uppercase tracking-wider text-accent-secondary">
                 {PERSONAL_INFO.name}
               </p>
@@ -50,7 +50,12 @@ export default function Hero() {
               <Button variant="glitch" href="#projects" className="w-full sm:w-auto">
                 _LAUNCH_PROJECTS
               </Button>
-              <Button variant="secondary" href="/resume.pdf" className="w-full sm:w-auto">
+              <Button
+                variant="secondary"
+                href="/Deepjyoti_Resume.pdf"
+                download="Deepjyoti_Dey_Resume.pdf"
+                className="w-full sm:w-auto"
+              >
                 _GET_RESUME.EXE
               </Button>
             </div>

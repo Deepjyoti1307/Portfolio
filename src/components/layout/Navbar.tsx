@@ -13,7 +13,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
-  { label: "Resume", href: "/resume.pdf" },
+  { label: "Resume", href: "/Deepjyoti_Resume.pdf" },
 ];
 
 export default function Navbar() {
@@ -41,9 +41,8 @@ export default function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
+                download={item.href.endsWith(".pdf") ? "Deepjyoti_Dey_Resume.pdf" : undefined}
                 className="py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background group"
-                target={item.href.endsWith(".pdf") ? "_blank" : undefined}
-                rel={item.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
               >
                 <span className="flex items-center font-label font-bold text-sm tracking-widest uppercase">
                   {/* Flashing prompt indicator */}
@@ -90,10 +89,9 @@ export default function Navbar() {
                 <a
                   key={item.label}
                   href={item.href}
+                  download={item.href.endsWith(".pdf") ? "Deepjyoti_Dey_Resume.pdf" : undefined}
                   onClick={() => setIsOpen(false)}
                   className="font-label text-xl font-bold uppercase tracking-widest py-3 border-b border-border/20 text-foreground hover:text-accent flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  target={item.href.endsWith(".pdf") ? "_blank" : undefined}
-                  rel={item.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
                 >
                   <span className="text-accent mr-3 font-mono">&gt;</span>
                   {item.label}

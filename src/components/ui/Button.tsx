@@ -5,6 +5,7 @@ interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "outline" | "ghost" | "glitch" | "accent";
   href?: string;
+  download?: string | boolean;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   className?: string;
@@ -15,6 +16,7 @@ export default function Button({
   children,
   variant = "primary",
   href,
+  download,
   onClick,
   type = "button",
   className = "",
@@ -72,11 +74,12 @@ export default function Button({
         return (
           <a
             href={href}
+            download={download}
             onClick={handleClick}
             data-text={textContent}
             className={`${baseStyles} group w-full sm:w-auto h-12 ${className}`}
-            target={href.startsWith("mailto:") ? undefined : "_blank"}
-            rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+            target={download || href.startsWith("mailto:") ? undefined : "_blank"}
+            rel={download || href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
           >
             {content}
           </a>
@@ -85,6 +88,7 @@ export default function Button({
       return (
         <Link
           href={href}
+          download={download}
           onClick={handleClick}
           data-text={textContent}
           className={`${baseStyles} group w-full sm:w-auto h-12 ${className}`}
@@ -121,8 +125,8 @@ export default function Button({
           onClick={handleClick}
           data-text={textContent}
           className={combinedStyles}
-          target={href.startsWith("mailto:") ? undefined : "_blank"}
-          rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+          target={download || href.startsWith("mailto:") ? undefined : "_blank"}
+          rel={download || href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
         >
           {children}
           <span className="glitch-scan" aria-hidden="true" />

@@ -125,7 +125,7 @@ function ProjectCard({
           boxShadow: isHovered
             ? `0 0 0 1px ${accent.border}, 0 20px 60px ${accent.glow}, 0 0 80px ${accent.glow}`
             : `0 0 0 1px rgba(72,92,105,0.8), 0 4px 20px rgba(0,0,0,0.4)`,
-          background: "#1e2a31",
+          background: "#fffdfd",
           position: "relative",
           overflow: "hidden",
         }}
