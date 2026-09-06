@@ -13,7 +13,7 @@ export default function SectionLabel({
   variant = "horizontal",
   className = "",
 }: SectionLabelProps) {
-  
+
   // Format localized mock Hex codes for HUD feel (e.g. 01 -> 0x8F, 02 -> 0x9D, etc.)
   const hexCodes: Record<string, string> = {
     "01": "0x4F",
@@ -46,7 +46,7 @@ export default function SectionLabel({
 
   return (
     <div
-      className={`border-b border-border pb-4 mb-8 md:mb-12 flex justify-between items-center select-none ${className}`}
+      className={`border-b border-border pb-4 mb-8 md:mb-12 flex justify-between items-center select-none animate-rise-in ${className}`}
     >
       {/* Title Lockup */}
       <div className="flex items-center gap-3">
